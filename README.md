@@ -1,51 +1,40 @@
-ember-cli-element-closest-polyfill
-==============================================================================
+# ember-cli-requestanimationframe-polyfill
 
-[Short description of the addon.]
+[![Build Status](https://travis-ci.org/miguelcobain/ember-cli-requestanimationframe-polyfill.svg?branch=master)](https://travis-ci.org/miguelcobain/ember-cli-requestanimationframe-polyfill)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-requestanimationframe-polyfill.svg)](https://emberobserver.com/addons/ember-cli-requestanimationframe-polyfill)
+[![npm version](https://badge.fury.io/js/ember-cli-requestanimationframe-polyfill.svg)](https://badge.fury.io/js/ember-cli-requestanimationframe-polyfill)
 
-Installation
-------------------------------------------------------------------------------
+Ember-CLI addon to add a polyfill for the [`window.requestAnimationFrame()`](https://developer.mozilla.org/en/docs/Web/API/window/requestAnimationFrame)
+property, based on [raf-polyfill](https://github.com/airwave-development/raf-polyfill).
 
+Internet Explorer 9 and lower do not support `requestAnimationFrame()`. 
+See full [browser support details](https://caniuse.com/#feat=requestanimationframe).
+
+## Installation
+
+```bash
+ember install ember-cli-requestanimationframe-polyfill
 ```
-ember install ember-cli-element-closest-polyfill
-```
 
+## Usage
 
-Usage
-------------------------------------------------------------------------------
+The addon will import the polyfill by default to your `vendor.js`. 
 
-[Longer description of how to use the addon in apps.]
+Beginning with version 2.13 Ember CLI supports a [Targets](http://rwjblue.com/2017/04/21/ember-cli-targets/) feature, 
+allowing you to specify the list of browsers your app should support like `last 1 Chrome versions` or `ie 11`.
+If the [caniuse database](https://caniuse.com/#feat=requestanimationframe) indicates that all browsers you want to support *fully* support the feature, then the 
+polyfill will *not* be included into your build, to not increase your bundle size.
 
+### Usage in an addon
 
-Contributing
-------------------------------------------------------------------------------
+This should also work as a nested addon of another addon, just include it as a `dependency`. So if you addon
+makes use of `requestAnimationFrame()`, you can use this to make sure the API is available. Given the above mentioned targets feature,
+it will have no negative impact on the consuming app should the polyfill not be needed.
 
-### Installation
+## Credits
 
-* `git clone <repository-url>`
-* `cd ember-cli-element-closest-polyfill`
-* `npm install`
+This addon was inspired by a similar polyfill addon: https://github.com/kaliber5/ember-cli-classlist-polyfill
 
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Running tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
-
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
