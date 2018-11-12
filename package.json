@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-requestanimationframe-polyfill",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ember cli addon that includes a polyfill for requestAnimationFrame if needed.",
   "keywords": [
     "ember-addon",
